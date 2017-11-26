@@ -26,13 +26,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
-            //code here
+            
+            self.TextField([self.username,self.password])
+            self.UI()
+            self.firstStep()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            //code here
+            self.TextField([self.username,self.password])
+            self.UI()
         }
     }
     
@@ -74,6 +78,122 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+    func HH(notification: Notification) -> CGFloat {
+        let information = (notification as NSNotification).userInfo
+        let size = information![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return size.cgRectValue.height
+    }
     
+    func up(notification: Notification) {
+        if self.view.frame.origin.y >= 0
+        {
+            self.view.frame.origin.y -= self.HH(notification: notification) - 15
+        }
+    }
+    
+    func down(notification: Notification) {
+        
+            self.view.frame.origin.y += self.HH(notification: notification) - 15
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        self.view.frame.origin.y=0
+        return true
+    }
+    
+    @IBAction func loginButton(_ sender: Any)
+         { if username.text == "" || password.text == ""
+        {
+            //alert(message: "Please Enter The Details")
+        }
+        else
+        {
+            UISetup(enable: false)
+            //validateLogin(name: name.text!, password: password.text!, responsee: responseAfterLogin(e:))
+            
+            }
+            
+        }
+        
+    
+    
+    func LoginWork(error: String?){
+        if error != nil {
+            
+            //loginFailed()
+            
+            //alert(message: error!)
+        }
+        else{
+            
+            DispatchQueue.main.async {
+                self.UISetup(enable: true)
+                self.Login()
+            }
+        }
+    }
 
+    func UI(){
+        let tool = UIToolbar()
+        let ok = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(Pin))
+        tool.sizeToFit()
+        tool.setItems([ok], animated: true)
+        password.inputAccessoryView = tool
+        
+    }
+    
+    @objc  func Pin()
+    { view.endEditing(true)
+    }
+    
+    
+    func TextField(_ textFields: [UITextField]) {
+        
+        for textField in textFields {
+            
+            let textFieldPaddingViewFrame = CGRect(x: 0.0, y: 0.0, width: 13.0, height: 0.0)
+            let textFieldPaddingView = UIView(frame: textFieldPaddingViewFrame)
+            textField.leftView = textFieldPaddingView
+            textField.leftViewMode = .always
+            textField.textColor = UIColor.white
+            textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!,attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+            
+        }
+    }
+    
+    
+    func Login()
+    {
+        UISetup(enable: true)
+        let steer = storyboard?.instantiateViewController(withIdentifier: "^^^^tabbar^^^^") as! UITabBarController
+        present(steer, animated: true, completion:  nil );
+    }
+    func loginFailed()
+    {
+        self.UISetup(enable: true)
+        // self.animate()
+    }
+    
+    
+    func UISetup(enable:Bool)
+    {
+        self.username.isEnabled=enable
+        self.password.isEnabled=enable
+        self.loginbutton.isEnabled=enable
+        if !enable
+        {
+            self.view.alpha = 0.3
+        }
+        else
+        {
+            self.view.alpha = 1.2
+            
+        }
+        
+    }
+    
+    
 }

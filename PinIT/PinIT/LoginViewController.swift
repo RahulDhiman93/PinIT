@@ -48,9 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         username.delegate = self
         password.delegate = self
         password.isSecureTextEntry = true
-        
-        //code here
-        
+     
         
     }
     
@@ -84,14 +82,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         return size.cgRectValue.height
     }
     
-    func up(notification: Notification) {
+    @objc func up(notification: Notification) {
         if self.view.frame.origin.y >= 0
         {
             self.view.frame.origin.y -= self.HH(notification: notification) - 15
         }
     }
     
-    func down(notification: Notification) {
+    @objc func down(notification: Notification) {
         
             self.view.frame.origin.y += self.HH(notification: notification) - 15
         
@@ -104,15 +102,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        textField.text = ""
+        
+       ///
+        //
+        //
+        if username.isEditing || password.isEditing{
+            subscribeToKeyboardNotifications()
+        }
+        else{
+            unsubscribeFromKeyboardNotifications()
+        }
+    }
+    
+    
     @IBAction func loginButton(_ sender: Any)
          { if username.text == "" || password.text == ""
         {
-            //alert(message: "Please Enter The Details")
+            alert(message: "Please Enter The Details")
         }
         else
         {
             UISetup(enable: false)
             //validateLogin(name: name.text!, password: password.text!, responsee: responseAfterLogin(e:))
+            Login()
             
             }
             
@@ -121,12 +136,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     
     func LoginWork(error: String?){
+        
         if error != nil {
             
-            //loginFailed()
-            
-            //alert(message: error!)
+            loginFailed()
+            alert(message: error!)
+        
         }
+            
         else{
             
             DispatchQueue.main.async {
@@ -158,7 +175,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             let textFieldPaddingView = UIView(frame: textFieldPaddingViewFrame)
             textField.leftView = textFieldPaddingView
             textField.leftViewMode = .always
-            textField.textColor = UIColor.white
+            textField.textColor = UIColor.black
             textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!,attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
             
         }
@@ -168,13 +185,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     func Login()
     {
         UISetup(enable: true)
-        let steer = storyboard?.instantiateViewController(withIdentifier: "^^^^tabbar^^^^") as! UITabBarController
+        let steer = storyboard?.instantiateViewController(withIdentifier: "tab") as! UITabBarController
         present(steer, animated: true, completion:  nil );
     }
     func loginFailed()
     {
         self.UISetup(enable: true)
-        // self.animate()
     }
     
     
@@ -194,6 +210,61 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
+}
+
+private extension LoginViewController{
+  
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        
+        view.frame.origin.y  -= getKeyboardHeight(notification)
+    }
+    
+    @objc func keyboardWillHide(_ notification:Notification) {
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    
+    
+    func alert(message:String )
+    {
+        DispatchQueue.main.async {
+            
+            
+            let alertview = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            alertview.addAction(UIAlertAction(title: "Terminated!!!", style: .default, handler: {
+                action in
+                DispatchQueue.main.async {
+                    
+                    self.UISetup(enable: true)
+                }
+            }))
+            self.present(alertview, animated: true, completion: nil)
+        }
+    }
     
     
 }
+    
+    
+

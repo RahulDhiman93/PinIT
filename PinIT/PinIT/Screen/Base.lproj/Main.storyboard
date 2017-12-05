@@ -39,7 +39,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uze-k1-YHw">
                                 <rect key="frame" x="16" y="543" width="343" height="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.01536188472" green="0.012889521330000001" blue="0.00071243913210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -88,7 +88,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="jGc-Jx-iQq" id="bEm-u6-cJ2"/>
                         <outlet property="loginbutton" destination="jGc-Jx-iQq" id="GQT-Me-SM4"/>
                         <outlet property="password" destination="6hw-Ui-d0d" id="5Yc-Hz-AnS"/>
                         <outlet property="username" destination="uze-k1-YHw" id="zPA-Q9-saS"/>
@@ -101,7 +100,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="rHg-US-fA7">
             <objects>
-                <tabBarController id="VZD-Io-AQs" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VZD-Io-AQs" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rvL-ys-kbh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

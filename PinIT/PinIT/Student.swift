@@ -21,11 +21,15 @@ class Student
     var mapLen = ""
     var link = ""
     
+    init(key:String,name:String)
+    {
+    }
+    
     init()
     {
     }
    
-    init(obj:[String:Any]){
+    init(obj:[String:Any]  ){
         
         self.firstName = "\(obj["firstName"] ?? "")"
         

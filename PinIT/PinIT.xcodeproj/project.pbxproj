@@ -11,6 +11,8 @@
 		0815626D1FD7050D00595CA5 /* AllOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815626C1FD7050D00595CA5 /* AllOver.swift */; };
 		0815626F1FD7056B00595CA5 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815626E1FD7056B00595CA5 /* Student.swift */; };
 		081562711FD70D4B00595CA5 /* CP-CC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081562701FD70D4B00595CA5 /* CP-CC.swift */; };
+		081562731FD7209500595CA5 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081562721FD7209500595CA5 /* Origin.swift */; };
+		081562751FD7210100595CA5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081562741FD7210100595CA5 /* Networking.swift */; };
 		08C52B4C1FC8409D00EEB1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C52B4B1FC8409D00EEB1BF /* AppDelegate.swift */; };
 		08C52B511FC8409D00EEB1BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C52B4F1FC8409D00EEB1BF /* Main.storyboard */; };
 		08C52B531FC8409D00EEB1BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08C52B521FC8409D00EEB1BF /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 		0815626C1FD7050D00595CA5 /* AllOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOver.swift; sourceTree = "<group>"; };
 		0815626E1FD7056B00595CA5 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		081562701FD70D4B00595CA5 /* CP-CC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CP-CC.swift"; sourceTree = "<group>"; };
+		081562721FD7209500595CA5 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
+		081562741FD7210100595CA5 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		08C52B481FC8409D00EEB1BF /* PinIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C52B4B1FC8409D00EEB1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08C52B501FC8409D00EEB1BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			children = (
 				0815626C1FD7050D00595CA5 /* AllOver.swift */,
 				0815626E1FD7056B00595CA5 /* Student.swift */,
+				081562721FD7209500595CA5 /* Origin.swift */,
 				081562701FD70D4B00595CA5 /* CP-CC.swift */,
 			);
 			name = Model;
@@ -91,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				081468F41FC983590008B2D8 /* LoginViewController.swift */,
+				081562741FD7210100595CA5 /* Networking.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 				0815626F1FD7056B00595CA5 /* Student.swift in Sources */,
 				08C52B4C1FC8409D00EEB1BF /* AppDelegate.swift in Sources */,
 				081562711FD70D4B00595CA5 /* CP-CC.swift in Sources */,
+				081562731FD7209500595CA5 /* Origin.swift in Sources */,
+				081562751FD7210100595CA5 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

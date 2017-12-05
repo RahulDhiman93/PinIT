@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-struct AllOver
+struct AllOverData
 {
     static var personInfo = [Student]()
     static var ann = [MKPointAnnotation]()

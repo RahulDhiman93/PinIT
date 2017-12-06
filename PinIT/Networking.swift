@@ -191,4 +191,36 @@ func PinLocation(rahul:@escaping ()->()){
     task.resume()
 }
 
-
+func UploadLocation(http:String, obj:String?, resp:@escaping (_ error :String?)->()){
+    
+    UIApplication.shared.beginIgnoringInteractionEvents()
+    
+    let rqst = NSMutableURLRequest(url : URL(string: "https://parse.udacity.com/parse/classes/StudentLocation\(obj ?? "")")!)
+    rqst.addValue(CValue.parseAppId, forHTTPHeaderField: Ckey.parseAppId)
+    rqst.addValue(CValue.X_Parse_API, forHTTPHeaderField: Ckey.X_Parse_API)
+    rqst.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    rqst.httpBody = "{\"uniqueKey\": \"\(AllOverData.login.key)\", \"firstName\": \"\(AllOverData.login.firstName)\", \"lastName\": \"\(AllOverData.login.lastName)\",\"mapString\": \"\(AllOverData.login.mapLen)\", \"mediaURL\": \"\(AllOverData.login.url)\",\"latitude\": \(AllOverData.login.latitude1) , \"longitude\":  \(AllOverData.login.longitude1)}".data(using: String.Encoding.utf8)
+    
+    
+    rqst.httpMethod =  http
+    let session = URLSession.shared
+    let task = session.dataTask(with: rqst as URLRequest) { data, response, error in
+        
+        if error != nil {
+            UIApplication.shared.endIgnoringInteractionEvents()
+            resp(error?.localizedDescription)
+            return
+        }
+        
+        let data = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+        if obj == nil
+        {   UIApplication.shared.endIgnoringInteractionEvents()
+            AllOverData.login.objId = data["objectId"] as! String
+        }
+        UIApplication.shared.endIgnoringInteractionEvents()
+        resp(nil)
+        
+    }
+    task.resume()
+    
+}

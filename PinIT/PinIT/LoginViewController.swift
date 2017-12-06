@@ -126,7 +126,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         else
         {
             UISetup(enable: false)
-            //validateLogin(name: name.text!, password: password.text!, responsee: responseAfterLogin(e:))
+            verifyLogin(username: username.text!, password: password.text!, resp: LoginWork(e:))
             Login()
             
             }
@@ -135,7 +135,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
     
     
-    func LoginWork(error: String?){
+    func LoginWork(e error: String?){
         
         if error != nil {
             

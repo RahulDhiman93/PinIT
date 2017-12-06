@@ -337,7 +337,7 @@
         <!--OnTheMap-->
         <scene sceneID="aD0-fs-xi2">
             <objects>
-                <viewController id="Vop-kD-ZHg" sceneMemberID="viewController">
+                <viewController id="Vop-kD-ZHg" customClass="Map" customModule="PinIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oux-FF-fD1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -361,6 +361,9 @@
                                 <rect key="frame" x="16" y="7" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="loggingout:" destination="Vop-kD-ZHg" eventType="touchUpInside" id="53N-Fh-6cb"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -369,6 +372,9 @@
                                     <rect key="frame" x="335" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="icon_refresh"/>
+                                    <connections>
+                                        <action selector="refreshData:" destination="Vop-kD-ZHg" eventType="touchUpInside" id="BME-lx-sBY"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="B4A-Yv-9oS">
@@ -376,10 +382,16 @@
                                     <rect key="frame" x="295" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="icon_pin"/>
+                                    <connections>
+                                        <action selector="pinit:" destination="Vop-kD-ZHg" eventType="touchUpInside" id="Ro4-lB-IEq"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapKit" destination="gAD-Ql-bG8" id="a3E-fe-SOU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZM-DK-v9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

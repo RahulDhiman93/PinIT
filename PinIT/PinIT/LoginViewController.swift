@@ -114,7 +114,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         {
             UISetup(enable: false)
             verifyLogin(username: username.text!, password: password.text!, resp: LoginWork(e:))
-            Login()
+            
             
             }
             

@@ -67,8 +67,8 @@ class TableView:Origin,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
-       // cell.configureCell(person: AllOverData.personInfo[indexPath.row])
+        let cell=tableView.dequeueReusableCell(withIdentifier: "box") as! TableViewCell
+        cell.ConfigCell(person: AllOverData.personInfo[indexPath.row])
         
         
         return cell

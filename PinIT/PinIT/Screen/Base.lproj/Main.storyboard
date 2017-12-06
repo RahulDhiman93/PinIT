@@ -136,7 +136,7 @@
         <scene sceneID="C6E-Rs-uqP">
             <objects>
                 <viewController id="w1D-et-vfC" customClass="TableView" customModule="PinIT" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="q6N-AE-360">
+                    <view key="view" contentMode="scaleToFill" id="q6N-AE-360" customClass="TableViewCell" customModule="PinIT" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -145,7 +145,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="ifK-SI-Xx2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="box" rowHeight="90" id="ifK-SI-Xx2" userLabel="Cell" customClass="TableViewCell" customModule="PinIT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ifK-SI-Xx2" id="Yzd-SK-D8R">
@@ -178,6 +178,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YMx-an-grI"/>
+                        <connections>
+                            <outlet property="high" destination="Jbs-jI-Kld" id="QG6-zu-QII"/>
+                            <outlet property="low" destination="Luo-QL-X2Q" id="FCX-Q0-HJ6"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="OnTheMap" id="iga-8K-FMC">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="R1I-Jk-wtM">

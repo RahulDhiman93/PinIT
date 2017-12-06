@@ -10,6 +10,19 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-   
+    @IBOutlet weak var high: UILabel!
+    @IBOutlet weak var low: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    func ConfigCell(person:Student)
+    {
+        high.text = person.firstName + person.lastName
+        low.text = person.url
+       
+    }
 
 }

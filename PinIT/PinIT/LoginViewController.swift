@@ -102,20 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        textField.text = ""
-        
-       ///
-        //
-        //
-        if username.isEditing || password.isEditing{
-            subscribeToKeyboardNotifications()
-        }
-        else{
-            unsubscribeFromKeyboardNotifications()
-        }
-    }
+    
     
     
     @IBAction func loginButton(_ sender: Any)
@@ -214,35 +201,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 
 private extension LoginViewController{
   
-    @objc func keyboardWillShow(_ notification:Notification) {
-        
-        
-        view.frame.origin.y  -= getKeyboardHeight(notification)
-    }
-    
-    @objc func keyboardWillHide(_ notification:Notification) {
-        view.frame.origin.y += getKeyboardHeight(notification)
-    }
-    
-    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
-        
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
-    }
-    
-    func subscribeToKeyboardNotifications() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    func unsubscribeFromKeyboardNotifications() {
-        
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-        
-    }
     
     
     

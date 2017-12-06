@@ -47,90 +47,101 @@ func studentData(resp:@escaping(_ error:String?)->()){
 
 func verifyLogin(username:String, password:String, resp:@escaping (_ error:String?)->()){
     
-    let rqst = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
-    rqst.httpMethod = "POST"
-    rqst.addValue("application/json", forHTTPHeaderField: "Accept")
-    rqst.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    rqst.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
-    
-    
+    let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+    request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
     let session = URLSession.shared
-    
-    let task = session.dataTask(with: rqst as URLRequest){data,response,error in
-        if error != nil{
+    let task = session.dataTask(with: request as URLRequest) { data, response, error in
+        if(error != nil )
+        {
             DispatchQueue.main.async {
                 
                 resp(  error?.localizedDescription)
             }
             return
+            
         }
+        
         
         let range = Range(5..<data!.count)
-        let InitData = data?.subdata(in: range)
-        (NSString(data: InitData!, encoding: String.Encoding.utf8.rawValue)!)
-        
+        let newData = data?.subdata(in: range)
+        (NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
         do{
-            let datta = try JSONSerialization.jsonObject(with: InitData!, options: .allowFragments) as! [String:Any]
-           if (datta["status"] as? Double) != nil
-           {
-            
-            DispatchQueue.main.async {
+            let data=try JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as! [String:Any]
+            if (data["status"] as? Double) != nil
+            {
                 
-                resp("Invalid Details")
+                
+                DispatchQueue.main.async {
+                    
+                    resp("Invalid Details")
+                }
+                return
+                
+                
+                
             }
-            return
-        }
-           else{
-            let Dic = datta["account"] as! [String:Any]
-            AllOverData.login.key = Dic["key"] as! String
-            let url = URL(string :"https://www.udacity.com/api/users/\(AllOverData.login.key)")
-            var rqstURL = URLRequest(url: url!)
-            rqstURL.addValue(CValue.parseAppId, forHTTPHeaderField: Ckey.parseAppId)
-            rqstURL.addValue(CValue.X_Parse_API, forHTTPHeaderField: Ckey.X_Parse_API)
-            rqstURL.addValue("application/json", forHTTPHeaderField: "Accept")
-            rqstURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let session = URLSession.shared
-            let task = session.dataTask(with: rqstURL, completionHandler: {(Data1,responseData,error) in
                 
-            let range = Range(5..<Data1!.count)
-            let InitData = Data1?.subdata(in: range)
-                do{
-                    let apidata = try JSONSerialization.jsonObject(with: InitData!, options: .allowFragments   ) as! [String : Any]
-                    if let userdata = apidata["user"] as? [String:Any] ,let firstname = userdata["first_name"]  as? String , let lastname = userdata["last_name"] as? String
-                    {
-                        AllOverData.login.firstName=firstname
-                        AllOverData.login.lastName=lastname
-                        
-                        DispatchQueue.main.async {
-                            resp(nil)
+            else
+            {
+                let dict = data["account"] as! [String:Any]
+                AllOverData.login.key = dict["key"] as! String;
+                let url=URL(string: "https://www.udacity.com/api/users/\(AllOverData.login.key)")
+                var requestUrl =   URLRequest(url:  url!)
+                requestUrl.addValue(CValue.parseAppId, forHTTPHeaderField: Ckey.parseAppId )
+                requestUrl.addValue(CValue.X_Parse_API , forHTTPHeaderField: Ckey.X_Parse_API )
+                requestUrl.addValue("application/json", forHTTPHeaderField: "Accept")
+                requestUrl.addValue("application/json", forHTTPHeaderField: "Content-Type");
+                let session = URLSession.shared
+                
+                let task = session.dataTask(with: requestUrl, completionHandler: { (Data,URLResponse, Error) in
+                    
+                    let range = Range(5..<Data!.count)
+                    let newData = Data?.subdata(in: range)
+                    do{
+                        let apidata = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments   ) as! [String : Any]
+                        if let userdata = apidata["user"] as? [String:Any] ,let firstname = userdata["first_name"]  as? String , let lastname = userdata["last_name"] as? String
+                        {
+                            AllOverData.login.firstName=firstname
+                            AllOverData.login.lastName=lastname
+                            
+                            DispatchQueue.main.async {
+                                resp(nil)
+                            }
+                        }
+                            
+                        else
+                        {     DispatchQueue.main.async {
+                            resp("error in logging in") }
+                            return
                         }
                     }
+                    catch
+                    {
+                        DispatchQueue.main.async {
+                            resp("error in logging in ")
+                        }
                         
-                    else
-                    {     DispatchQueue.main.async {
-                        resp("error in logging in") }
-                        return
-                    }
-                
-                }
-                catch{
-                    DispatchQueue.main.async {
-                        resp("error in logging in ")
                     }
                     
-                }
-            
-            
-            })
-            task.resume()
-            
+                })
+                
+                
+                task.resume()
+                
             }
-    }
-        catch{
+        }
+        catch
+        {
+            
             
         }
-}
+        
+        
+        
+    }
     task.resume()
 }
 

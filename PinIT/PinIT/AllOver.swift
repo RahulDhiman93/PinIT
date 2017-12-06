@@ -24,7 +24,7 @@ struct AllOverData
         
     }
     
-    func url(api: String?, para: [String: AnyObject]?=nil)->URL{
+func RqstURL(api: String?, para: [String: AnyObject]?=nil)->URL{
         var cam = URLComponents()
         cam.scheme = "https"
         cam.host = "parse.udacity.com"
@@ -40,4 +40,5 @@ struct AllOverData
         }
         return cam.url!
     }
+    
 }

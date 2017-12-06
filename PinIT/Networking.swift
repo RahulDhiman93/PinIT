@@ -134,5 +134,61 @@ func verifyLogin(username:String, password:String, resp:@escaping (_ error:Strin
     task.resume()
 }
 
+func RqstURL(api: String?, para: [String: AnyObject]?=nil)->URL{
+    var cam = URLComponents()
+    cam.scheme = "https"
+    cam.host = "parse.udacity.com"
+    cam.path = "/parse/classes"
+        + (api ?? "")
+    
+    if let para = para {
+        cam.queryItems = [URLQueryItem]()
+        for(key, value) in para {
+            let queryItem = URLQueryItem(name: key,value:"\(value)")
+            cam.queryItems?.append(queryItem)
+        }
+    }
+    return cam.url!
+}
+
+func PinLocation(rahul:@escaping ()->()){
+    
+    let PInURL = RqstURL(api: "/StudentLocation",para: [PKeys.Where:"{\"\(PKeys.uniqueKey)\":\"  " + "\(AllOverData.login.key)"  + "\"}" as AnyObject])
+    
+    let rqst = NSMutableURLRequest(url: PInURL)
+    rqst.addValue(CValue.parseAppId, forHTTPHeaderField: Ckey.parseAppId)
+    rqst.addValue(CValue.X_Parse_API, forHTTPHeaderField: Ckey.X_Parse_API)
+    
+    let session = URLSession.shared
+
+    let task = session.dataTask(with: rqst as URLRequest){data,response,error in
+        if error != nil{
+            return
+        }
+        do{
+            let metaData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+            let output = metaData["results"] as! [[String:Any]]
+            if output.count == 0
+            {
+                DispatchQueue.main.sync {
+                    
+                    
+                    rahul()
+                }
+            }
+            else{
+                DispatchQueue.main.sync{
+                    AllOverData.login = Student(obj: output[0])
+                    
+                }
+            }
+        }
+        catch{
+            
+        }
+    }
+    
+    task.resume()
+}
 
 

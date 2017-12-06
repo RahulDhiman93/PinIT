@@ -52,6 +52,7 @@
 				08C52B4A1FC8409D00EEB1BF /* PinIT */,
 				08DA89A51FCDF16E0000C4F5 /* Info.plist */,
 				08C52B491FC8409D00EEB1BF /* Products */,
+				081562741FD7210100595CA5 /* Networking.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				081468F41FC983590008B2D8 /* LoginViewController.swift */,
-				081562741FD7210100595CA5 /* Networking.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

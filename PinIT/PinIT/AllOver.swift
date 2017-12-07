@@ -15,6 +15,8 @@ struct AllOverData
     static var ann = [MKPointAnnotation]()
     static var login = Student()
     static var loc:String = ""
+    static var annotion:MKPointAnnotation?
+    static var region:MKCoordinateRegion?
     
     static func AddToCloud(person:Student,_ annotion:MKPointAnnotation? ){
         personInfo.append(person)

@@ -17,7 +17,6 @@
 		081562791FD85EB900595CA5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081562781FD85EB900595CA5 /* TableViewCell.swift */; };
 		0815627C1FD85F2E00595CA5 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815627B1FD85F2E00595CA5 /* TableView.swift */; };
 		0815627E1FD85F3C00595CA5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815627D1FD85F3C00595CA5 /* MapView.swift */; };
-		081562801FD9970900595CA5 /* Post2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815627F1FD9970900595CA5 /* Post2ViewController.swift */; };
 		08C52B4C1FC8409D00EEB1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C52B4B1FC8409D00EEB1BF /* AppDelegate.swift */; };
 		08C52B511FC8409D00EEB1BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C52B4F1FC8409D00EEB1BF /* Main.storyboard */; };
 		08C52B531FC8409D00EEB1BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08C52B521FC8409D00EEB1BF /* Assets.xcassets */; };
@@ -36,7 +35,6 @@
 		081562781FD85EB900595CA5 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0815627B1FD85F2E00595CA5 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		0815627D1FD85F3C00595CA5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		0815627F1FD9970900595CA5 /* Post2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post2ViewController.swift; sourceTree = "<group>"; };
 		08C52B481FC8409D00EEB1BF /* PinIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C52B4B1FC8409D00EEB1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08C52B501FC8409D00EEB1BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				081468F41FC983590008B2D8 /* LoginViewController.swift */,
-				0815627F1FD9970900595CA5 /* Post2ViewController.swift */,
 				081562761FD85CE100595CA5 /* PostViewController.swift */,
 			);
 			name = Controller;
@@ -203,7 +200,6 @@
 				081562771FD85CE100595CA5 /* PostViewController.swift in Sources */,
 				0815627C1FD85F2E00595CA5 /* TableView.swift in Sources */,
 				0815626D1FD7050D00595CA5 /* AllOver.swift in Sources */,
-				081562801FD9970900595CA5 /* Post2ViewController.swift in Sources */,
 				0815627E1FD85F3C00595CA5 /* MapView.swift in Sources */,
 				081468F51FC983590008B2D8 /* LoginViewController.swift in Sources */,
 				081562791FD85EB900595CA5 /* TableViewCell.swift in Sources */,

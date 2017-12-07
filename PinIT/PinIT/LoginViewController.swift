@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginbutton: UIButton!
+    @IBOutlet weak var Indicator: UIActivityIndicatorView!
     
     
     var getemail:CGFloat!
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.TextField([self.username,self.password])
             self.UI()
             self.firstStep()
+            self.Indicator.isHidden = true
         }
     }
     
@@ -37,6 +39,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         DispatchQueue.main.async {
             self.TextField([self.username,self.password])
             self.UI()
+            self.Indicator.isHidden = true
         }
     }
     
@@ -114,7 +117,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         {
             UISetup(enable: false)
             verifyLogin(username: username.text!, password: password.text!, resp: LoginWork(e:))
-            
+            self.Indicator.isHidden = false
             
             }
             
@@ -128,6 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             
             loginFailed()
             alert(message: error!)
+            self.Indicator.isHidden = true
         
         }
             
@@ -136,6 +140,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             DispatchQueue.main.async {
                 self.UISetup(enable: true)
                 self.Login()
+                self.Indicator.isHidden = true
+                
             }
         }
     }
@@ -188,7 +194,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         self.loginbutton.isEnabled=enable
         if !enable
         {
-            self.view.alpha = 0.3
+            self.view.alpha = 0.8
         }
         else
         {
@@ -210,7 +216,7 @@ private extension LoginViewController{
             
             
             let alertview = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            alertview.addAction(UIAlertAction(title: "Terminated!!!", style: .default, handler: {
+            alertview.addAction(UIAlertAction(title: "Try Again - username or password Incorrect!", style: .default, handler: {
                 action in
                 DispatchQueue.main.async {
                     

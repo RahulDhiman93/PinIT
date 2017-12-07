@@ -84,35 +84,20 @@ class PostViewController: UIViewController,UITextFieldDelegate {
                 self.mapview.addAnnotation(annotation1)
                 
                 AllOverData.login.latitude1 = (coor.latitude)
-                
                 AllOverData.login.longitude1 = (coor.longitude)
-                
-                
-                
                 
                 self.setUI(enable: true)
                 
-                
-                
-                
                 let span=MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                
                 let region=MKCoordinateRegion(center: coor, span: span)
-                
-            
                 self.mapview.setRegion(region, animated: true)
                 
                 self.submit.isEnabled = true
+                self.linkurl.isHidden = false
                 
-               
-                
-            }
-            
-            
-        }
-        
-            
-        }
+               }
+             }
+           }
     
 
     @IBAction func cancel(_ sender: Any) {
@@ -130,7 +115,7 @@ class PostViewController: UIViewController,UITextFieldDelegate {
         }
         else
         {
-            UploadLocation(http: "PUT",obj: "/\(AllOverData.login.objId)",resp:response(e:))
+            UploadLocation(http: "PUT",obj: "\(AllOverData.login.objId)",resp:response(e:))
             
             
             

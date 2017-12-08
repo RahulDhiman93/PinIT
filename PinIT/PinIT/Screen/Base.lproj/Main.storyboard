@@ -46,13 +46,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGc-Jx-iQq" userLabel="Login Button">
-                                <rect key="frame" x="155" y="175" width="64" height="32"/>
-                                <state key="normal" backgroundImage="login"/>
-                                <connections>
-                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R7z-gV-6Up"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UDACITY LOGIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF7-Mg-MjI">
                                 <rect key="frame" x="75" y="418" width="225" height="35"/>
                                 <fontDescription key="fontDescription" name="OriyaSangamMN" family="Oriya Sangam MN" pointSize="25"/>
@@ -63,6 +56,17 @@
                                 <rect key="frame" x="169" y="245" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGc-Jx-iQq" userLabel="Login Button">
+                                <rect key="frame" x="163" y="175" width="46" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="YAz-uX-fRf"/>
+                                    <constraint firstAttribute="width" constant="46" id="zN9-QR-fJ8"/>
+                                </constraints>
+                                <state key="normal" title="LOGIN"/>
+                                <connections>
+                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R7z-gV-6Up"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -71,24 +75,22 @@
                             <constraint firstItem="uze-k1-YHw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="2PH-Un-CSj"/>
                             <constraint firstItem="6hw-Ui-d0d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="519-Cq-1Qc"/>
                             <constraint firstItem="Epx-zA-UBG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="60z-pr-yi0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jGc-Jx-iQq" secondAttribute="trailing" constant="156" id="83R-SI-5fS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uze-k1-YHw" secondAttribute="trailing" constant="16" id="BNv-If-MHp"/>
                             <constraint firstItem="6hw-Ui-d0d" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DGZ-Zl-fMt"/>
-                            <constraint firstItem="jGc-Jx-iQq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="155" id="EOa-WN-k6T"/>
                             <constraint firstItem="hF7-Mg-MjI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="EYC-fZ-gtr"/>
                             <constraint firstItem="Epx-zA-UBG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="169" id="MGo-u0-YKN"/>
                             <constraint firstItem="Rs2-AE-IlH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QtG-Cu-Y5E"/>
-                            <constraint firstItem="jGc-Jx-iQq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RVD-Ul-4kd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jGc-Jx-iQq" secondAttribute="bottom" constant="460" id="Rtx-gj-YIw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jGc-Jx-iQq" secondAttribute="bottom" constant="474" id="Rtx-gj-YIw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hF7-Mg-MjI" secondAttribute="bottom" constant="214" id="Tl3-Ve-9ef"/>
                             <constraint firstItem="uze-k1-YHw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YZK-Os-4d7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hF7-Mg-MjI" secondAttribute="trailing" constant="75" id="aSy-rb-63G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Epx-zA-UBG" secondAttribute="trailing" constant="169" id="cf1-mZ-deH"/>
                             <constraint firstItem="6hw-Ui-d0d" firstAttribute="top" secondItem="uze-k1-YHw" secondAttribute="bottom" constant="23" id="fSS-d2-35g"/>
-                            <constraint firstItem="hF7-Mg-MjI" firstAttribute="top" secondItem="jGc-Jx-iQq" secondAttribute="bottom" constant="211" id="hQw-uA-vcR"/>
+                            <constraint firstItem="hF7-Mg-MjI" firstAttribute="top" secondItem="jGc-Jx-iQq" secondAttribute="bottom" constant="225" id="hQw-uA-vcR"/>
                             <constraint firstItem="Rs2-AE-IlH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iBA-3f-yCb"/>
                             <constraint firstItem="Rs2-AE-IlH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rqt-EG-Rif"/>
                             <constraint firstItem="hF7-Mg-MjI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sC5-AS-MIB"/>
+                            <constraint firstItem="jGc-Jx-iQq" firstAttribute="centerX" secondItem="6hw-Ui-d0d" secondAttribute="centerX" constant="-1.5" id="sCx-1e-CoN"/>
                             <constraint firstItem="uze-k1-YHw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="u8E-CI-TSp"/>
                             <constraint firstItem="Rs2-AE-IlH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wCy-0b-FYf"/>
                             <constraint firstItem="jGc-Jx-iQq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="155" id="yNw-IX-iiJ"/>
@@ -277,7 +279,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="AbN-6n-xZi">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gfC-mn-4FD">
-                                            <rect key="frame" x="65" y="7" width="294" height="30"/>
+                                            <rect key="frame" x="311" y="7" width="48" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Cancel"/>
                                             <connections>
@@ -458,7 +460,6 @@
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="icon_pin" width="24" height="24"/>
         <image name="icon_refresh" width="24" height="24"/>
-        <image name="login" width="337" height="150"/>
         <image name="pin" width="32" height="32"/>
     </resources>
 </document>

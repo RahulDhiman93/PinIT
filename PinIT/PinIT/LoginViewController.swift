@@ -40,6 +40,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.TextField([self.username,self.password])
             self.UI()
             self.Indicator.isHidden = true
+            self.username.placeholder = "username"
+            self.password.placeholder = "password"
         }
     }
     

@@ -79,24 +79,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-    func HH(notification: Notification) -> CGFloat {
-        let information = (notification as NSNotification).userInfo
-        let size = information![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return size.cgRectValue.height
-    }
-    
-    @objc func up(notification: Notification) {
-        if self.view.frame.origin.y >= 0
-        {
-            self.view.frame.origin.y -= self.HH(notification: notification) - 15
-        }
-    }
-    
-    @objc func down(notification: Notification) {
-        
-            self.view.frame.origin.y += self.HH(notification: notification) - 15
-        
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {

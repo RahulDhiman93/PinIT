@@ -64,6 +64,7 @@ class TableView:Origin,UITableViewDelegate,UITableViewDataSource
     
     @IBAction func Logout(_ sender:Any){
         super.LoggingOut()
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,7 +103,7 @@ class TableView:Origin,UITableViewDelegate,UITableViewDataSource
         }
     }
     
-    func ViewTable(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let url = AllOverData.personInfo[indexPath.row].link
         if let url = NSURL(string:  url) {

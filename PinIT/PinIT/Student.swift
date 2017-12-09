@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class Student
+struct Student
 {
     var firstName = ""
     var lastName = ""

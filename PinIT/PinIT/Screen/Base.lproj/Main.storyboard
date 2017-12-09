@@ -365,6 +365,7 @@
                         <outlet property="Pinit" destination="jBY-1j-w2C" id="FIf-57-ksU"/>
                         <outlet property="enterlocation" destination="PoY-oF-cE8" id="BaU-O9-PQX"/>
                         <outlet property="linkurl" destination="4QX-HJ-Yqg" id="UBD-Es-4iY"/>
+                        <outlet property="mapview" destination="VPl-gb-0DQ" id="Eby-rK-Hws"/>
                         <outlet property="submit" destination="V91-LK-XOL" id="PaD-RS-d91"/>
                         <outlet property="upperText" destination="pbI-HZ-V8h" id="ncS-Pe-gog"/>
                     </connections>

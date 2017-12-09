@@ -239,27 +239,27 @@ func UploadLocation(http:String, obj:String?, resp:@escaping (_ error :String?)-
 
 func logoutMessC(handler:@escaping (_ message : String?)->())
 {
-    let rqst = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
-    rqst.httpMethod = "DELETE"
+    let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")! as URL)
+    request.httpMethod = "DELETE"
     var xsrfCookie: HTTPCookie? = nil
     let sharedCookieStorage = HTTPCookieStorage.shared
+    
     for cookie in sharedCookieStorage.cookies! {
         if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
     }
+    
     if let xsrfCookie = xsrfCookie {
-        rqst.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
     }
+    
     let session = URLSession.shared
-    let task = session.dataTask(with: rqst as URLRequest) { data, response, error in
+    let task = session.dataTask(with: request as URLRequest) { data, response, error in
         if error != nil {
-            handler( error?.localizedDescription)
             return
         }
-        else{
-            handler(nil)
-        }
-        let range = Range(5..<data!.count)
-        let Oppo = data?.subdata(in: range) 
+        
     }
     task.resume()
 }
+
+

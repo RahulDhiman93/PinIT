@@ -21,7 +21,7 @@ class PostViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet var submit: UIButton!
     
     
-    
+    let vc = UIActivityIndicatorView()
     
     override func viewDidLoad() {
  
@@ -29,7 +29,7 @@ class PostViewController: UIViewController,UITextFieldDelegate {
         enterlocation.delegate = self
         linkurl.delegate = self
         submit.isEnabled = false
-        linkurl.isHidden = true
+        linkurl.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -43,9 +43,7 @@ class PostViewController: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func pinIt(_ sender:Any){
-       
-       
-        
+        view.endEditing(true)
         if enterlocation.text == ""
         {
             alert(message: "Enter Valid Location",tryAgain: false, res: { })
@@ -53,61 +51,90 @@ class PostViewController: UIViewController,UITextFieldDelegate {
         }
         
         
-        
+        //  setUI(enable: true)
         UIApplication.shared.beginIgnoringInteractionEvents()
         
-       
+        vc.activityIndicatorViewStyle = .gray
+        vc.hidesWhenStopped=true
+        vc.center=self.view.center
+        vc.startAnimating()
+        self.view.addSubview(vc)
         
-        let rq=MKLocalSearchRequest()
-        rq.naturalLanguageQuery=enterlocation.text
+        
+        let searchrq=MKLocalSearchRequest()
+        searchrq.naturalLanguageQuery=enterlocation.text
         
         
-        let search=MKLocalSearch(request: rq)
+        let search=MKLocalSearch(request: searchrq)
         UIApplication.shared.endIgnoringInteractionEvents()
         search.start { (MKLocalSearchResponse, Error) in
             if MKLocalSearchResponse == nil
-            {
+            {   self.vc.stopAnimating()
                 self.alert(message: "No Internet Connection Or Not a Valid Location ",tryAgain: true,res: {
                     self.dismiss(animated: true, completion: nil)
                 })
             }
             else
             {
-                guard let coor=MKLocalSearchResponse?.boundingRegion.center else{
-                    return
-                }
+                let coordinate=MKLocalSearchResponse?.boundingRegion.center
+                //print(coordinate!.latitude)
                 
-                let annotation1=MKPointAnnotation()
+                //print(coordinate!.longitude)
                 
-                annotation1.coordinate=coor
-                annotation1.title=self.enterlocation.text
-                self.mapview.addAnnotation(annotation1)
                 
-                AllOverData.login.latitude1 = (coor.latitude)
-                AllOverData.login.longitude1 = (coor.longitude)
+                let annotation=MKPointAnnotation()
                 
+                annotation.coordinate=coordinate!
+                
+                AllOverData.login.latitude1 = (coordinate?.latitude) ?? 0.0
+                
+                AllOverData.login.longitude1 = (coordinate?.longitude) ?? 0.0
+                
+               // print(AllOverData.login.longitude1)
+               // print("sdjkfjd")
+               // print(AllOverData.login.latitude1)
+                
+                annotation.title=self.enterlocation.text
+                
+                print("sdfsd")
+                
+                
+                self.vc.stopAnimating()
                 self.setUI(enable: true)
                 
+                self.mapview.addAnnotation(annotation)
+                
                 let span=MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                let region=MKCoordinateRegion(center: coor, span: span)
+                
+                let region=MKCoordinateRegion(center: coordinate!, span: span)
+                
                 self.mapview.setRegion(region, animated: true)
-                
+               
                 self.submit.isEnabled = true
-                self.linkurl.isHidden = false
-                
-               }
-             }
-           }
+                self.linkurl.isEnabled = true
+            }
+            
+            
+        }
+        
+    }
     
 
     @IBAction func cancel(_ sender: Any) {
-        let editor = storyboard!.instantiateViewController(withIdentifier: "tab")
-        present(editor, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
    
     @IBAction func submit(_ sender: Any) {
         AllOverData.login.url = enterlocation.text!
+        if linkurl.text == ""
+        {
+            self.alert(message: "Enter Valid Link",tryAgain: false, res: { })
+            return
+            
+        }
+        vc.startAnimating()
+        AllOverData.login.url = linkurl.text!
         if update == nil
         {
             UploadLocation(http: "POST",obj: nil,resp: response(e:))
@@ -120,8 +147,7 @@ class PostViewController: UIViewController,UITextFieldDelegate {
             
             
         }
-        let editor = storyboard!.instantiateViewController(withIdentifier: "tab")
-        present(editor, animated: true, completion: nil)
+       
     }
     
     func response(e error:String?)

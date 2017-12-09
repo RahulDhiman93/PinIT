@@ -75,33 +75,31 @@ class Origin: UIViewController {
     }
     
     func LoggingOut(){
-        self.view.alpha = 0.6
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        logoutMessC{ error in
-            if error == nil{
-                let ctrl = self.storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
-                self.present(ctrl, animated: true, completion: {
-                    self.view.alpha = 1
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    
-                })
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                return
             }
-            else{
-        
-                let AV = UIAlertController(title: "", message: error!, preferredStyle: .alert)
-                AV.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {
-                    action in
-                    
-                    self.view.alpha = 1
-                }))
-                DispatchQueue.main.async {
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    self.present(AV, animated: true, completion: nil)
-                }
-        
-            }
-    }
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range)
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+        }
+        task.resume()
+
+        dismiss(animated: true, completion: nil)
+}
+    
+}
+    
     
 
-}
-}

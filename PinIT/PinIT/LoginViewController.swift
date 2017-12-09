@@ -119,6 +119,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             verifyLogin(username: username.text!, password: password.text!, resp: LoginWork(e:))
             self.Indicator.isHidden = false
             
+            username.text = ""
+            password.text = ""
+            
             }
             
         }

@@ -310,14 +310,6 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBY-1j-w2C">
-                                <rect key="frame" x="278" y="230" width="81" height="30"/>
-                                <color key="backgroundColor" red="0.1770517568158898" green="0.17464852674324921" blue="0.75178108808290156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="PinIT"/>
-                                <connections>
-                                    <action selector="pinIt:" destination="znd-5q-rkw" eventType="touchUpInside" id="xxr-62-l2S"/>
-                                </connections>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VPl-gb-0DQ">
                                 <rect key="frame" x="0.0" y="268" width="375" height="355"/>
                             </mapView>
@@ -333,35 +325,39 @@
                                 <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBY-1j-w2C">
+                                <rect key="frame" x="316" y="230" width="35" height="30"/>
+                                <color key="backgroundColor" red="0.1770517568158898" green="0.17464852674324921" blue="0.75178108808290156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="PinIT"/>
+                                <connections>
+                                    <action selector="pinIt:" destination="znd-5q-rkw" eventType="touchUpInside" id="xxr-62-l2S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zBK-3Q-F7j" firstAttribute="leading" secondItem="jBh-BZ-BRM" secondAttribute="leading" id="2ay-lb-cEZ"/>
                             <constraint firstItem="pbI-HZ-V8h" firstAttribute="width" secondItem="DoW-OW-eUf" secondAttribute="width" id="Bl8-pb-yW5"/>
-                            <constraint firstItem="jBY-1j-w2C" firstAttribute="leading" secondItem="PoY-oF-cE8" secondAttribute="trailing" constant="8" id="GEz-Sx-yJc"/>
                             <constraint firstItem="QhU-tt-hhY" firstAttribute="leading" secondItem="jBh-BZ-BRM" secondAttribute="leading" constant="56" id="JXW-8F-vWe"/>
-                            <constraint firstItem="jBY-1j-w2C" firstAttribute="leading" secondItem="PoY-oF-cE8" secondAttribute="leading" constant="262" id="Klb-lE-LNR"/>
                             <constraint firstItem="QhU-tt-hhY" firstAttribute="top" secondItem="pbI-HZ-V8h" secondAttribute="bottom" constant="53" id="LcB-vC-hwz"/>
                             <constraint firstAttribute="bottom" secondItem="jBY-1j-w2C" secondAttribute="bottom" constant="407" id="U3Y-dl-adf"/>
                             <constraint firstItem="jBh-BZ-BRM" firstAttribute="bottom" secondItem="pbI-HZ-V8h" secondAttribute="bottom" constant="518" id="UzV-BY-rHH"/>
-                            <constraint firstItem="jBY-1j-w2C" firstAttribute="top" secondItem="PoY-oF-cE8" secondAttribute="bottom" constant="-30" id="Xs5-2l-Sb1"/>
+                            <constraint firstItem="PoY-oF-cE8" firstAttribute="top" secondItem="jBY-1j-w2C" secondAttribute="top" id="Wu5-uf-E0n"/>
                             <constraint firstItem="VPl-gb-0DQ" firstAttribute="leading" secondItem="zBK-3Q-F7j" secondAttribute="leading" id="XzK-SH-zb1"/>
                             <constraint firstItem="4QX-HJ-Yqg" firstAttribute="centerX" secondItem="VPl-gb-0DQ" secondAttribute="centerX" id="aAC-Mf-SoT"/>
                             <constraint firstItem="pbI-HZ-V8h" firstAttribute="height" secondItem="DoW-OW-eUf" secondAttribute="height" constant="-591" id="aWq-7n-xzz"/>
                             <constraint firstItem="zBK-3Q-F7j" firstAttribute="bottom" secondItem="jBh-BZ-BRM" secondAttribute="bottom" id="b6Q-Dj-9Az"/>
                             <constraint firstItem="4QX-HJ-Yqg" firstAttribute="centerX" secondItem="jBh-BZ-BRM" secondAttribute="centerX" id="cbd-3k-g3i"/>
                             <constraint firstItem="PoY-oF-cE8" firstAttribute="leading" secondItem="jBh-BZ-BRM" secondAttribute="leading" constant="16" id="ehZ-f3-UXI"/>
+                            <constraint firstItem="jBh-BZ-BRM" firstAttribute="trailing" secondItem="jBY-1j-w2C" secondAttribute="trailing" constant="24" id="fio-k3-JgY"/>
                             <constraint firstItem="pbI-HZ-V8h" firstAttribute="leading" secondItem="DoW-OW-eUf" secondAttribute="leading" id="hWl-TI-VQM"/>
                             <constraint firstItem="zBK-3Q-F7j" firstAttribute="centerX" secondItem="jBh-BZ-BRM" secondAttribute="centerX" id="isG-JY-ocB"/>
                             <constraint firstItem="4QX-HJ-Yqg" firstAttribute="leading" secondItem="jBh-BZ-BRM" secondAttribute="leading" constant="56" id="jbG-KJ-iUe"/>
                             <constraint firstItem="jBh-BZ-BRM" firstAttribute="trailing" secondItem="4QX-HJ-Yqg" secondAttribute="trailing" constant="57" id="js9-eJ-hAS"/>
-                            <constraint firstItem="jBY-1j-w2C" firstAttribute="leading" secondItem="PoY-oF-cE8" secondAttribute="trailing" constant="8" id="pVH-Ra-pQH"/>
                             <constraint firstItem="jBh-BZ-BRM" firstAttribute="trailing" secondItem="PoY-oF-cE8" secondAttribute="trailing" constant="105" id="ppB-5G-b0H"/>
-                            <constraint firstItem="jBY-1j-w2C" firstAttribute="trailing" secondItem="PoY-oF-cE8" secondAttribute="trailing" constant="89" id="rMc-dh-Tsk"/>
                             <constraint firstItem="VPl-gb-0DQ" firstAttribute="bottom" secondItem="zBK-3Q-F7j" secondAttribute="top" id="rlk-ZV-1SR"/>
                             <constraint firstItem="jBh-BZ-BRM" firstAttribute="bottom" secondItem="QhU-tt-hhY" secondAttribute="bottom" constant="445" id="tPX-Zo-e9S"/>
                             <constraint firstItem="pbI-HZ-V8h" firstAttribute="leading" secondItem="zBK-3Q-F7j" secondAttribute="leading" id="umq-jo-ekS"/>
-                            <constraint firstItem="jBY-1j-w2C" firstAttribute="leading" secondItem="PoY-oF-cE8" secondAttribute="trailing" constant="8" id="vCv-56-9ck"/>
                             <constraint firstItem="jBh-BZ-BRM" firstAttribute="trailing" secondItem="QhU-tt-hhY" secondAttribute="trailing" constant="57" id="xzI-Vw-JE3"/>
                             <constraint firstItem="jBh-BZ-BRM" firstAttribute="trailing" secondItem="zBK-3Q-F7j" secondAttribute="trailing" id="yya-ef-dnk"/>
                             <constraint firstItem="QhU-tt-hhY" firstAttribute="top" secondItem="4QX-HJ-Yqg" secondAttribute="bottom" constant="8" symbolic="YES" id="zTO-Ng-dmj"/>

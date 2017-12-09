@@ -32,6 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.UI()
             self.firstStep()
             self.Indicator.isHidden = true
+            self.loginbutton.sizeToFit()
         }
     }
     
